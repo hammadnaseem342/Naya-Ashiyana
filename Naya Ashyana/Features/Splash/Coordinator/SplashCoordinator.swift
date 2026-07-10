@@ -1,10 +1,3 @@
-//
-//  SplashCoordinator.swift
-//  Naya Ashyana
-//
-//  Created by The Mac Store on 10/07/2026.
-//
-
 import UIKit
 
 final class SplashCoordinator: Coordinator {
@@ -22,8 +15,7 @@ final class SplashCoordinator: Coordinator {
         viewModel.onSplashFinished = { [weak self] in
             print("Coordinator Callback")
 
-            self?.showLogin()
-
+            self?.showOnboarding()
         }
 
         let viewController = SplashViewController(
@@ -36,12 +28,15 @@ final class SplashCoordinator: Coordinator {
         )
     }
 }
+
 private extension SplashCoordinator {
 
-    func showLogin() {
+    func showOnboarding() {
 
-        print("Navigate to Login")
+        let onboardingCoordinator = OnboardingCoordinator(
+            navigationController: navigationController
+        )
 
+        onboardingCoordinator.start()
     }
-
 }
